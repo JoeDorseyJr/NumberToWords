@@ -12,13 +12,13 @@ public interface Numbers {
     // EN = Add 10 and VE = Add 10;
     int ELEVEN = 11; // UNIQUE Beginning EN
     int VE = 10; // UNIQUE Ending // TW+VE == 2 + 10
-    // TH+TEEN == 3 + 10
-    // FO+TEEN == 4 + 10
-    // FI+TEEN == 5 + 10
-    // SI+TEEN == 6 + 10
-    // SE+TEEN == 7 + 10
-    // EI+TEEN == 8 + 10
-    // NI+TEEN == 9 + 10
+    // TH+EN == 3 + 10
+    // FO+EN == 4 + 10
+    // FI+EN == 5 + 10
+    // SI+EN == 6 + 10
+    // SE+EN == 7 + 10
+    // EI+EN == 8 + 10
+    // NI+EN == 9 + 10
     int TY = 10; // TY = Multiply by 10
     // TW*TY == 2 * 10
     // TH*TY == 3 * 10
