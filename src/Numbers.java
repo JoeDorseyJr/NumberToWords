@@ -28,6 +28,6 @@ public interface Numbers {
     // EI*TY == 8 * 10
     // NI*TY == 9 * 10
     int HUNDRED = 100;// HUNDRED = Multiply by 100 or 10^2
-    int THOUSAND = 100;// THOUSAND = Multiply by 1000 or 10^3
+    int THOUSAND = 1000;// THOUSAND = Multiply by 1000 or 10^3
     int MILLION = 1000000;// MILLION = Multiply by 1000000 or 10^6
 }
