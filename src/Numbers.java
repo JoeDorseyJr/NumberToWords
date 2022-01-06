@@ -8,10 +8,9 @@ public interface Numbers {
     int SE = 7;
     int EI = 8;
     int NI = 9;
-    int EN = 10;
-    // EN = Add 10 and VE = Add 10;
-    int ELEVEN = 11; // UNIQUE Beginning EN
-    int VE = 10; // UNIQUE Ending // TW+VE == 2 + 10
+    int EN = 10;    // EN = Add 10
+    int EL = 1;     // UNIQUE Beginning | EL+EN == 1 + 10
+    int VE = 10;    // UNIQUE Ending    | TW+VE == 2 + 10
     // TH+EN == 3 + 10
     // FO+EN == 4 + 10
     // FI+EN == 5 + 10
