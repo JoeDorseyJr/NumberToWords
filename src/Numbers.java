@@ -1,0 +1,34 @@
+public interface Numbers {
+    int ONE = 1; // UNIQUE
+    int TW = 2;
+    int TH = 3;
+    int FO = 4;
+    int FI = 5;
+    int SI = 6;
+    int SE = 7;
+    int EI = 8;
+    int NI = 9;
+    int EN = 10;
+    // EN = Add 10 and VE = Add 10;
+    int ELEVEN = 11; // UNIQUE Beginning EN
+    int VE = 10; // UNIQUE Ending // TW+VE == 2 + 10
+    // TH+TEEN == 3 + 10
+    // FO+TEEN == 4 + 10
+    // FI+TEEN == 5 + 10
+    // SI+TEEN == 6 + 10
+    // SE+TEEN == 7 + 10
+    // EI+TEEN == 8 + 10
+    // NI+TEEN == 9 + 10
+    int TY = 10; // TY = Multiply by 10
+    // TW*TY == 2 * 10
+    // TH*TY == 3 * 10
+    // FO*TY == 4 * 10
+    // FI*TY == 5 * 10
+    // SI*TY == 6 * 10
+    // SE*TY == 7 * 10
+    // EI*TY == 8 * 10
+    // NI*TY == 9 * 10
+    int HUNDRED = 100;// HUNDRED = Multiply by 100 or 10^2
+    int THOUSAND = 100;// THOUSAND = Multiply by 1000 or 10^3
+    int MILLION = 1000000;// MILLION = Multiply by 1000000 or 10^6
+}
