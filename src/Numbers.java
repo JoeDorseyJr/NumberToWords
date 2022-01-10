@@ -1,16 +1,16 @@
 public interface Numbers {
-    int ON = 1; // UNIQUE
-    int TW = 2;
-    int TH = 3;
-    int FO = 4;
-    int FI = 5;
-    int SI = 6;
-    int SE = 7;
-    int EI = 8;
-    int NI = 9;
-    int EN = 10;    // EN = Add 10
-    int EL = 1;     // UNIQUE Beginning | EL+EN == 1 + 10
-    int VE = 10;    // UNIQUE Ending    | TW+VE == 2 + 10
+    int ON = 1; // UNIQUE ONE
+    int TW = 2; // TWO
+    int TH = 3; // THREE
+    int FO = 4; // FOUR
+    int FI = 5; // FIVE - Length = 4
+    int SI = 6; // SIX
+    int SE = 7; // SEVEN - Length = 5
+    int EI = 8; // EIGHT
+    int NI = 9; // NINE
+    int EN = 10;// TEN - Length = 3 MEANS Add 10
+    int EL = 1; // ELEVEN | UNIQUE Beginning | EL+EN == 1 + 10
+    int VE = 10;// TWELVE - Length = 6 | UNIQUE Ending | TW+VE == 2 + 10
     // TH+EN == 3 + 10
     // FO+EN == 4 + 10
     // FI+EN == 5 + 10
