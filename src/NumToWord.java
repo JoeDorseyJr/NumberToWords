@@ -3,6 +3,24 @@ import java.util.HashMap;
 public class NumToWord implements Numbers {
 
     private final HashMap <String,Integer> numToWord = new HashMap<>();
+    private String word = "";
+    private int wordValue = 0;
+
+    public String getWord() {
+        return word;
+    }
+
+    public void setWord(String word) {
+        this.word = word;
+    }
+
+    public int getWordValue() {
+        return wordValue;
+    }
+
+    public void setWordValue(int wordValue) {
+        this.wordValue = wordValue;
+    }
 
     NumToWord(){
         loadReferenceValues();
