@@ -1,5 +1,5 @@
 public interface Numbers {
-    int ONE = 1; // UNIQUE
+    int ON = 1; // UNIQUE
     int TW = 2;
     int TH = 3;
     int FO = 4;
@@ -30,4 +30,5 @@ public interface Numbers {
     int HUNDRED = 100;// HUNDRED = Multiply by 100 or 10^2
     int THOUSAND = 1000;// THOUSAND = Multiply by 1000 or 10^3
     int MILLION = 1000000;// MILLION = Multiply by 1000000 or 10^6
+    int BILLION = 1000000000;
 }
