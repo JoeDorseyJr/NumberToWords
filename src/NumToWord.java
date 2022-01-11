@@ -12,10 +12,11 @@ public class NumToWord implements Numbers {
 
     NumToWord(String words){
         String[] word = words.toUpperCase()
-                .split("^[a-zA-Z]");
+                .split("\\s");
 
         loadReferenceValues();
-        System.out.println(checkValue(words.toUpperCase()));
+        wordsToNumber(word);
+        //System.out.println(checkValue(words.toUpperCase()));
     }
 
     public String getWord() {
@@ -81,5 +82,16 @@ public class NumToWord implements Numbers {
             return firstValue * secondValue;
         }
         return numToWord.get(word);
+    }
+
+    private int wordsToNumber(String[] words){
+        List<Integer> values = new Stack<>();
+        Arrays.stream(words)
+                .forEach((x) -> values.add(checkValue(x)));
+
+        values.forEach(System.out::println);
+
+
+        return 0;
     }
 }
