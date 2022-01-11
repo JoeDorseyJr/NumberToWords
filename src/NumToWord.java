@@ -1,17 +1,21 @@
-import java.util.HashMap;
-import java.util.Locale;
+import java.util.*;
 
 public class NumToWord implements Numbers {
 
     private final HashMap <String,Integer> numToWord = new HashMap<>();
     private String word = "";
     private int wordValue = 0;
+
     NumToWord(){
         loadReferenceValues();
     }
-    NumToWord(String word){
+
+    NumToWord(String words){
+        String[] word = words.toUpperCase()
+                .split("^[a-zA-Z]");
+
         loadReferenceValues();
-        System.out.println(checkValue(word.toUpperCase()));
+        System.out.println(checkValue(words.toUpperCase()));
     }
 
     public String getWord() {
@@ -29,8 +33,6 @@ public class NumToWord implements Numbers {
     public void setWordValue(int wordValue) {
         this.wordValue = wordValue;
     }
-
-
 
     private void  loadReferenceValues(){
        numToWord.put("ON",ON);
@@ -71,6 +73,9 @@ public class NumToWord implements Numbers {
             }
 
             if (!lastTwo.equals("TY")) {
+                if ((lastTwo.equals("EN") || lastTwo.equals("VE")) && word.length()<6) {
+                    return firstValue;
+                }
                 return firstValue + secondValue;
             }
             return firstValue * secondValue;
