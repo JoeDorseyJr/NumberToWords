@@ -1,5 +1,5 @@
 public class Main {
     public static void main(String[] args) {
-        new NumToWord("one two three");
+        new NumToWord("twelve");
     }
 }
