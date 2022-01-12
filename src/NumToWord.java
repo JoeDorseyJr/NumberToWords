@@ -6,23 +6,25 @@ public class NumToWord implements Numbers {
     private String word = "";
     private Long wordValue = 0L;
 
+//CONSTRUCTORS
     NumToWord(){
         loadReferenceValues();
     }
 
     NumToWord(String words){
-        String[] word = words.toUpperCase()
-                .split("\\s");
         loadReferenceValues();
-        System.out.println(wordsToNumber(word));
+        this.setWord(words);
+        String[] word = this.getWord().split("\\s");
+        this.setWordValue(wordsToNumber(word));
     }
 
+//GETTER and SETTERS
     public String getWord() {
         return word;
     }
 
     public void setWord(String word) {
-        this.word = word;
+        this.word = word.toUpperCase();
     }
 
     public Long getWordValue() {
@@ -33,6 +35,7 @@ public class NumToWord implements Numbers {
         this.wordValue = wordValue;
     }
 
+//METHODS
     private void  loadReferenceValues(){
        wordToNumberMap.put("ON",ON);
        wordToNumberMap.put("TW",TW);
@@ -114,9 +117,9 @@ public class NumToWord implements Numbers {
             previousValue = currentValue;
         }
         numbers.add(number);
-        System.out.println(numbers);
 
         return numbers.stream()
-                .reduce(Long::sum).orElse(0L);
+                .reduce(Long::sum)
+                .orElse(0L);
     }
 }
