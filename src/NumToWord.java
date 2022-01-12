@@ -115,11 +115,21 @@ public class NumToWord implements Numbers {
             }
             results.add(values.pop());
             previousValue = currentValue;
+            System.out.println(results);
+            System.out.println(numbers);
         }
         numbers.add(number);
+        System.out.println(numbers);
 
         return numbers.stream()
                 .reduce(Long::sum)
                 .orElse(0L);
+    }
+
+    public Long valueCheck(String words){
+        this.setWord(words);
+        String[] word = this.getWord().split("\\s");
+        this.setWordValue(wordsToNumber(word));
+        return this.getWordValue();
     }
 }
