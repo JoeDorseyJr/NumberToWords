@@ -1,0 +1,114 @@
+Index: src/NumToWord.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.util.*;\n\npublic class NumToWord implements Numbers {\n\n    private final HashMap <String,Long> wordToNumberMap = new HashMap<>();\n    private String word = \"\";\n    private Long wordValue = 0L;\n\n//CONSTRUCTORS\n    NumToWord(){\n        loadReferenceValues();\n    }\n\n    NumToWord(String words){\n        loadReferenceValues();\n        this.setWord(words);\n        String[] word = this.getWord().split(\"\\\\s\");\n        this.setWordValue(wordsToNumber(word));\n    }\n\n//GETTER and SETTERS\n    public String getWord() {\n        return word;\n    }\n\n    public void setWord(String word) {\n        this.word = word.toUpperCase();\n    }\n\n    public Long getWordValue() {\n        return wordValue;\n    }\n\n    public void setWordValue(Long wordValue) {\n        this.wordValue = wordValue;\n    }\n\n//METHODS\n    private void  loadReferenceValues(){\n       wordToNumberMap.put(\"ON\",ON);\n       wordToNumberMap.put(\"TW\",TW);\n       wordToNumberMap.put(\"TH\",TH);\n       wordToNumberMap.put(\"FO\",FO);\n       wordToNumberMap.put(\"FI\",FI);\n       wordToNumberMap.put(\"SI\",SI);\n       wordToNumberMap.put(\"SE\",SE);\n       wordToNumberMap.put(\"EI\",EI);\n       wordToNumberMap.put(\"NI\",NI);\n       wordToNumberMap.put(\"EN\",EN);\n       wordToNumberMap.put(\"EL\",EL);\n       wordToNumberMap.put(\"VE\",VE);\n       wordToNumberMap.put(\"TY\",TY);\n       wordToNumberMap.put(\"HUNDRED\",HUNDRED);\n       wordToNumberMap.put(\"THOUSAND\",THOUSAND);\n       wordToNumberMap.put(\"MILLION\",MILLION);\n       wordToNumberMap.put(\"BILLION\",BILLION);\n    }\n\n    private Long checkValue(String word){\n        Long firstValue = 0L;\n        Long secondValue = 0L;\n        String firstTwo = word.substring(0, 2);\n        String lastTwo = word.substring(word.length() - 2);\n        boolean ignoreValue = !(word.equals(\"HUNDRED\")\n                || word.equals(\"THOUSAND\")\n                || word.equals(\"MILLION\")\n                || word.equals(\"BILLION\"));\n\n        if (ignoreValue) {\n            if (wordToNumberMap.containsKey(firstTwo)) {\n                firstValue = wordToNumberMap.get(firstTwo);\n            }\n\n            if (wordToNumberMap.containsKey(lastTwo)) {\n                secondValue = wordToNumberMap.get(lastTwo);\n            }\n\n            if (!lastTwo.equals(\"TY\")) {\n                if ((lastTwo.equals(\"EN\") || lastTwo.equals(\"VE\")) && word.length()<6) {\n                    if (word.equals(\"TEN\")){\n                        return EN;\n                    }\n                    return firstValue;\n                }\n                return firstValue + secondValue;\n            }\n            return firstValue * secondValue;\n        }\n        return wordToNumberMap.get(word);\n    }\n\n    private Long wordsToNumber(String[] words){\n        Stack<Long> values = new Stack<>();\n        Stack<Long> results = new Stack<>();\n        Long previousValue = 0L;\n        Long currentValue = 0L;\n        Long number = 0L;\n        ArrayList<Long> numbers = new ArrayList<>();\n\n        for (String x : words) {\n            values.add(0,checkValue(x));\n        }\n\n        while(!values.isEmpty()) {\n            currentValue = values.peek();\n            if(previousValue>currentValue && previousValue > HUNDRED){\n                numbers.add(number);\n                number = values.peek();\n            } else {\n                if (values.peek() < 100) {\n                    number += values.peek();\n                } else {\n                    number *= values.peek();\n                }\n            }\n            results.add(values.pop());\n            previousValue = currentValue;\n            System.out.println(results);\n            System.out.println(numbers);\n        }\n        numbers.add(number);\n        System.out.println(numbers);\n\n        return numbers.stream()\n                .reduce(Long::sum)\n                .orElse(0L);\n    }\n\n    public Long valueCheck(String words){\n        this.setWord(words);\n        String[] word = this.getWord().split(\"\\\\s\");\n        this.setWordValue(wordsToNumber(word));\n        return this.getWordValue();\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/NumToWord.java b/src/NumToWord.java
+--- a/src/NumToWord.java	(revision 0b59d236bfc28e5769f2d2487e0f6f7d0bfe9ac1)
++++ b/src/NumToWord.java	(date 1642083695121)
+@@ -132,4 +132,5 @@
+         this.setWordValue(wordsToNumber(word));
+         return this.getWordValue();
+     }
++
+ }
+Index: src/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>public class Main {\n    public static void main(String[] args) {\n        NumToWord value = new NumToWord(\"five hundred billion eight hundred sixty two million two hundred twenty five thousand three hundred two\");\n        System.out.println(value.getWordValue());\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Main.java b/src/Main.java
+--- a/src/Main.java	(revision 0b59d236bfc28e5769f2d2487e0f6f7d0bfe9ac1)
++++ b/src/Main.java	(date 1642084207923)
+@@ -1,6 +1,7 @@
+ public class Main {
+     public static void main(String[] args) {
+-        NumToWord value = new NumToWord("five hundred billion eight hundred sixty two million two hundred twenty five thousand three hundred two");
+-        System.out.println(value.getWordValue());
++//        NumToWord value = new NumToWord("five hundred billion eight hundred sixty two million two hundred twenty five thousand three hundred two");
++//        System.out.println(value.getWordValue());
++        new DataInput("NumberTest.txt");
+     }
+ }
+Index: src/DataInput.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.io.BufferedReader;\nimport java.io.FileReader;\nimport java.io.IOException;\nimport java.util.ArrayList;\n\npublic class DataInput {\n    private String fileName;\n    ArrayList<String> listOfNums = new ArrayList<>();\n    NumToWord values = new NumToWord();\n\n    public String getFileName() {\n        return fileName;\n    }\n\n    public void setFileName(String fileName) {\n        this.fileName = fileName;\n    }\n\n\n    DataInput(String fileName) {\n    }\n    public void readingText(){\n        try {\n            BufferedReader reader = new BufferedReader(new FileReader(this.getFileName()));\n            String line;\n            while ((line =reader.readLine()) != null){\n                listOfNums.add(line);\n            }\n        }catch (IOException e) {\n            e.printStackTrace();\n        }\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/DataInput.java b/src/DataInput.java
+--- a/src/DataInput.java	(revision 0b59d236bfc28e5769f2d2487e0f6f7d0bfe9ac1)
++++ b/src/DataInput.java	(date 1642085022403)
+@@ -1,13 +1,19 @@
+ import java.io.BufferedReader;
++import java.io.File;
+ import java.io.FileReader;
+ import java.io.IOException;
+ import java.util.ArrayList;
+ 
+ public class DataInput {
+     private String fileName;
+-    ArrayList<String> listOfNums = new ArrayList<>();
++    ArrayList<String> listOfNumbers = new ArrayList<>();
+     NumToWord values = new NumToWord();
+ 
++    DataInput (String fileName) {
++        this.setFileName(fileName);
++        this.readingText();
++    }
++
+     public String getFileName() {
+         return fileName;
+     }
+@@ -16,18 +22,18 @@
+         this.fileName = fileName;
+     }
+ 
+-
+-    DataInput(String fileName) {
+-    }
+     public void readingText(){
++        File file = new File(this.getFileName());
+         try {
+-            BufferedReader reader = new BufferedReader(new FileReader(this.getFileName()));
++            BufferedReader reader = new BufferedReader(new FileReader(file));
+             String line;
+             while ((line =reader.readLine()) != null){
+-                listOfNums.add(line);
++                listOfNumbers.add(line);
+             }
+         }catch (IOException e) {
+             e.printStackTrace();
+         }
+     }
++
++
+ }
+Index: NumberTest.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/NumberTest.txt b/NumberTest.txt
+new file mode 100644
+--- /dev/null	(date 1642084164676)
++++ b/NumberTest.txt	(date 1642084164676)
+@@ -0,0 +1,12 @@
++two hundred twenty five
++three
++forty five
++four hundred thousand twenty three
++thirty two
++thirteen
++two thousand twenty two
++four
++one
++fifteen
++seven
++seventeen
+\ No newline at end of file
