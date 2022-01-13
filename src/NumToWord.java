@@ -115,11 +115,8 @@ public class NumToWord implements Numbers {
             }
             results.add(values.pop());
             previousValue = currentValue;
-            System.out.println(results);
-            System.out.println(numbers);
         }
         numbers.add(number);
-        System.out.println(numbers);
 
         return numbers.stream()
                 .reduce(Long::sum)
